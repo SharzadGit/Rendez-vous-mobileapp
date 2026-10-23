@@ -10,12 +10,16 @@ class PlacesRepository {
   Future<List<NearbyPlace>> fetchNearby({
     required LatLng point,
     required String type, // 'cafe', 'restaurant', 'park'
-    double radiusMeters = 1000,
+    double radiusMeters = 1200,
   }) async {
     final query = _buildQuery(point, type, radiusMeters);
 
     final response = await http.post(
       Uri.parse(_overpassUrl),
+      headers: {
+        'User-Agent': 'RendezvousResearchApp/1.0 (final-year-project)',
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
       body: query,
     );
 
@@ -29,8 +33,13 @@ class PlacesRepository {
     final places = elements
         .where((e) => e['tags']?['name'] != null)
         .map((e) {
-          final lat = (e['lat'] as num).toDouble();
-          final lng = (e['lon'] as num).toDouble();
+          final lat = (e['lat'] as num?)?.toDouble() ??
+              (e['center']?['lat'] as num?)?.toDouble() ??
+              0.0;
+          final lng = (e['lon'] as num?)?.toDouble() ??
+              (e['center']?['lon'] as num?)?.toDouble() ??
+              0.0;
+
           return NearbyPlace(
             name: e['tags']['name'],
             type: type,
@@ -39,6 +48,7 @@ class PlacesRepository {
             distanceKm: _haversineKm(point, LatLng(lat, lng)),
           );
         })
+        .where((p) => p.lat != 0.0 && p.lng != 0.0)
         .toList()
       ..sort((a, b) => a.distanceKm.compareTo(b.distanceKm));
 
@@ -48,10 +58,12 @@ class PlacesRepository {
   String _buildQuery(LatLng point, String type, double radius) {
     final lat = point.latitude;
     final lng = point.longitude;
-    // Map our type to OSM amenity/leisure tag
+
     final osmTag = type == 'park'
-        ? 'node["leisure"="park"](around:$radius,$lat,$lng);'
-            'way["leisure"="park"](around:$radius,$lat,$lng);'
+        ? '''
+          node["leisure"="park"](around:$radius,$lat,$lng);
+          way["leisure"="park"](around:$radius,$lat,$lng);
+          '''
         : 'node["amenity"="$type"](around:$radius,$lat,$lng);';
 
     return '''
@@ -59,7 +71,7 @@ class PlacesRepository {
 (
   $osmTag
 );
-out body;
+out center;
 ''';
   }
 
