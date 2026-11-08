@@ -19,7 +19,7 @@ mocked tests.
 
 ## Contract and provenance
 
-POST `https://api.openrouteservice.org/v2/isochrones/{profile}`, with JSON body:
+POST `https://api.heigit.org/openrouteservice/v2/isochrones/{profile}`, with JSON body:
 
 ```json
 {
@@ -101,3 +101,8 @@ with a provider's per-minute limit. For reproducibility, archive exact requests,
 raw responses/metadata, profile, threshold and the documented provider limits;
 returned metadata is preserved but cannot guarantee a reproducible hosted road
 network across future provider updates. No live isochrone requests were made.
+
+The HeiGIT host migration uses the centralized `OrsEndpoints` configuration for
+matrix, isochrone retrieval, and the optimizer cache endpoint identity. Existing
+API keys and request semantics are unchanged. Endpoint regression tests are
+mocked; live behavior on the migrated host has not been validated.

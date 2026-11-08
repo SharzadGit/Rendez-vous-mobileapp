@@ -43,7 +43,7 @@ Origins must be finite WGS84 coordinates and participants must number 2–20.
 Driving, cycling (bicycle), and walking reuse `TravelMode.orsProfile` exactly.
 Motorcycle/two-wheeler is rejected before any request. Each unique query calls
 `getIsochrone(origin: ..., travelMode: ..., travelTime: tau)` once. It therefore
-uses the existing POST `/v2/isochrones/{profile}` request with one origin,
+uses the existing POST `https://api.heigit.org/openrouteservice/v2/isochrones/{profile}` request with one origin,
 `location_type=start`, `range_type=time`, seconds, and `[longitude, latitude]`.
 No batch-origin capacity is assumed.
 

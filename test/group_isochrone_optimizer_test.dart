@@ -81,6 +81,12 @@ class Harness {
     client = MockClient((request) async {
       final body = jsonDecode(request.body);
       expect(request.method, 'POST');
+      expect(request.url.host, 'api.heigit.org');
+      expect(request.url.scheme, 'https');
+      expect(
+        request.url.path,
+        '/openrouteservice/v2/isochrones/${request.url.pathSegments.last}',
+      );
       expect(body['range_type'], 'time');
       expect(body['location_type'], 'start');
       expect((body['locations'] as List).length, 1);
