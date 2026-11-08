@@ -7,6 +7,8 @@ environment:
   sdk: ^3.10.8
 
 dependencies:
+  clipper2: 0.0.3
+  dart_jts: 0.3.0+1
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.6
