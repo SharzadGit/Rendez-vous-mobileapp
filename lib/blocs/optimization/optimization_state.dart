@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:latlong2/latlong.dart';
 import '../../models/rendezvous_point.dart';
+import '../../models/user_location.dart';
 
 abstract class OptimizationState extends Equatable {
   const OptimizationState();
@@ -20,9 +21,10 @@ class OptimizationRunning extends OptimizationState {
 
 class OptimizationSuccess extends OptimizationState {
   final RendezvousPoint result;
-  const OptimizationSuccess(this.result);
+  final List<UserLocation> users;
+  const OptimizationSuccess(this.result, this.users);
   @override
-  List<Object?> get props => [result];
+  List<Object?> get props => [result, users];
 }
 
 class OptimizationFailure extends OptimizationState {

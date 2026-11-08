@@ -6,8 +6,6 @@ import 'package:share_plus/share_plus.dart';
 import '../services/isochrone_service.dart';
 import '../repositories/routing_repository.dart';
 import 'comparison_screen.dart';
-import '../blocs/location/location_bloc.dart';
-import '../blocs/location/location_state.dart';
 import '../blocs/optimization/optimization_bloc.dart';
 import '../blocs/optimization/optimization_event.dart';
 import '../blocs/places/places_bloc.dart';
@@ -20,8 +18,10 @@ import 'package:wakelock_plus/wakelock_plus.dart';
 
 class ResultScreen extends StatelessWidget {
   final RendezvousPoint result;
+  // Use the original participants and modes for display and comparison.
+  final List<UserLocation> users;
 
-  const ResultScreen({super.key, required this.result});
+  const ResultScreen({super.key, required this.result, required this.users});
 
   void _shareMeetingPoint(BuildContext context) {
     final lat = result.position.latitude.toStringAsFixed(6);
@@ -100,9 +100,6 @@ $mapsLink
 
   @override
   Widget build(BuildContext context) {
-    final locationState = context.watch<LocationBloc>().state;
-    final users = locationState.users;
-
     if (users.isEmpty) {
       return Scaffold(
         appBar: AppBar(
@@ -582,6 +579,8 @@ class _TravelTimesSection extends StatelessWidget {
         return Icons.directions_car;
       case TravelMode.twoWheeler:
         return Icons.two_wheeler;
+      case TravelMode.cycling:
+        return Icons.directions_bike;
       case TravelMode.walking:
         return Icons.directions_walk;
     }
@@ -592,7 +591,9 @@ class _TravelTimesSection extends StatelessWidget {
       case TravelMode.driving:
         return 'Driving';
       case TravelMode.twoWheeler:
-        return 'Two-Wheeler';
+        return 'Motorcycle (unsupported)';
+      case TravelMode.cycling:
+        return 'Cycling (bicycle)';
       case TravelMode.walking:
         return 'Walking';
     }

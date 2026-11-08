@@ -72,7 +72,7 @@ class MapScreen extends StatelessWidget {
                   BlocProvider.value(value: context.read<OptimizationBloc>()),
                   BlocProvider.value(value: context.read<PlacesBloc>()),
                 ],
-                child: ResultScreen(result: state.result),
+                child: ResultScreen(result: state.result, users: state.users),
               ),
             ),
           );

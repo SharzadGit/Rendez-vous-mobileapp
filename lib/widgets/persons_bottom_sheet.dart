@@ -53,7 +53,9 @@ class _PersonsBottomSheetState extends State<PersonsBottomSheet> {
       case TravelMode.driving:
         return 'Drive';
       case TravelMode.twoWheeler:
-        return 'Two-Wheeler';
+        return 'Motorcycle (unsupported)';
+      case TravelMode.cycling:
+        return 'Cycling (bicycle)';
       case TravelMode.walking:
         return 'Walk';
     }
@@ -65,6 +67,8 @@ class _PersonsBottomSheetState extends State<PersonsBottomSheet> {
         return Icons.directions_car;
       case TravelMode.twoWheeler:
         return Icons.two_wheeler;
+      case TravelMode.cycling:
+        return Icons.directions_bike;
       case TravelMode.walking:
         return Icons.directions_walk;
     }
@@ -325,9 +329,14 @@ class _ConfirmedPersonCard extends StatelessWidget {
                   isDense: true,
                   style: const TextStyle(
                       fontSize: 12, color: Colors.black87),
-                  items: TravelMode.values.map((mode) {
+                  items: [
+                    ...TravelMode.supported,
+                    if (user.travelMode == TravelMode.twoWheeler)
+                      TravelMode.twoWheeler,
+                  ].map((mode) {
                     return DropdownMenuItem(
                       value: mode,
+                      enabled: mode != TravelMode.twoWheeler,
                       child: Row(children: [
                         Icon(modeIcon(mode), size: 14),
                         const SizedBox(width: 4),
