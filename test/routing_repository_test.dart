@@ -46,7 +46,7 @@ void main() {
           expect(request.method, 'POST');
           expect(
             request.url.toString(),
-            'https://api.openrouteservice.org/v2/matrix/driving-car',
+            'https://api.heigit.org/openrouteservice/v2/matrix/driving-car',
           );
           final body = jsonDecode(request.body) as Map<String, dynamic>;
           final locations = body['locations'] as List;
@@ -158,7 +158,9 @@ void main() {
       var requests = 0;
       final client = MockClient((request) async {
         requests++;
-        expect(request.url.path, '/v2/matrix/${entry.value}');
+        expect(request.url.host, 'api.heigit.org');
+        expect(request.url.scheme, 'https');
+        expect(request.url.path, '/openrouteservice/v2/matrix/${entry.value}');
         expect(jsonDecode(request.body)['locations'], [
           [77, 12],
           [78, 13],

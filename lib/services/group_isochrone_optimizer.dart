@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import '../config/ors_endpoints.dart';
 import '../models/group_isochrone_search.dart';
 import '../models/road_network_isochrone.dart';
 import '../models/user_location.dart';
@@ -175,7 +176,7 @@ class _Search {
     users[index].position.latitude,
     profiles[index]!,
     threshold.inMicroseconds,
-    'https://api.openrouteservice.org/v2/isochrones',
+    OrsEndpoints.isochrones,
     'time',
     'start',
   );

@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:latlong2/latlong.dart';
 
+import '../config/ors_endpoints.dart';
 import '../config/api_keys.dart';
 import '../models/road_network_isochrone.dart';
 import '../models/user_location.dart';
@@ -82,7 +83,7 @@ class IsochroneRepository {
     final http.Response response;
     try {
       response = await (_client?.post ?? http.post)(
-        Uri.parse('https://api.openrouteservice.org/v2/isochrones/$profile'),
+        Uri.parse('${OrsEndpoints.isochrones}/$profile'),
         headers: {
           'Authorization': ApiKeys.ors,
           'Content-Type': 'application/json',

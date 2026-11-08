@@ -88,7 +88,7 @@ void main() {
           expect(request.method, 'POST');
           expect(
             request.url.toString(),
-            'https://api.openrouteservice.org/v2/isochrones/${entry.value}',
+            'https://api.heigit.org/openrouteservice/v2/isochrones/${entry.value}',
           );
           expect(request.headers['Content-Type'], 'application/json');
           expect(request.headers['Accept'], 'application/geo+json');

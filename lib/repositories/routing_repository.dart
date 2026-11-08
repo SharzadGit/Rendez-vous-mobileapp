@@ -1,11 +1,11 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:latlong2/latlong.dart';
+import '../config/ors_endpoints.dart';
 import '../config/api_keys.dart';
 import '../models/user_location.dart';
 
 class RoutingRepository {
-  static const _baseUrl = 'https://api.openrouteservice.org/v2/matrix';
   final http.Client? _client;
 
   RoutingRepository({http.Client? client}) : _client = client;
@@ -60,7 +60,7 @@ class RoutingRepository {
     });
 
     final response = await (_client?.post ?? http.post)(
-      Uri.parse('$_baseUrl/$profile'),
+      Uri.parse('${OrsEndpoints.matrix}/$profile'),
       headers: {
         'Authorization': ApiKeys.ors,
         'Content-Type': 'application/json',
