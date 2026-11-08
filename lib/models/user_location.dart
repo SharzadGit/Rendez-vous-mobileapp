@@ -1,7 +1,24 @@
 import 'package:latlong2/latlong.dart';
 import 'package:flutter/material.dart';
 
-enum TravelMode { driving, twoWheeler, walking }
+enum TravelMode {
+  driving,
+  // Legacy motorcycle-like option; never reinterpret it as a bicycle.
+  twoWheeler,
+  walking,
+  cycling;
+
+  static const supported = [driving, cycling, walking];
+
+  String get orsProfile => switch (this) {
+    driving => 'driving-car',
+    cycling => 'cycling-regular',
+    walking => 'foot-walking',
+    twoWheeler => throw UnsupportedError(
+      'Motorcycle/two-wheeler routing is not supported by OpenRouteService.',
+    ),
+  };
+}
 
 class UserLocation {
   final String id;

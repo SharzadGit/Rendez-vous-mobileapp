@@ -5,7 +5,7 @@ import '../config/api_keys.dart';
 import '../models/user_location.dart';
 
 class RoutingRepository {
-  static const _baseUrl = 'https://api.openrouteservice.org/v2/matrix/driving-car';
+  static const _baseUrl = 'https://api.openrouteservice.org/v2/matrix';
   final http.Client? _client;
 
   RoutingRepository({http.Client? client}) : _client = client;
@@ -17,6 +17,32 @@ class RoutingRepository {
   }) async {
     if (users.isEmpty) return [];
 
+    // Validate all modes before making any requests. A matrix has one profile,
+    // so group participants by profile and restore their original order below.
+    final groups = <String, List<int>>{};
+    for (var i = 0; i < users.length; i++) {
+      final profile = users[i].travelMode.orsProfile;
+      groups.putIfAbsent(profile, () => []).add(i);
+    }
+    final times = List<double>.filled(users.length, 0);
+    for (final group in groups.entries) {
+      final groupTimes = await _getProfileTravelTimes(
+        users: [for (final i in group.value) users[i]],
+        candidate: candidate,
+        profile: group.key,
+      );
+      for (var i = 0; i < group.value.length; i++) {
+        times[group.value[i]] = groupTimes[i];
+      }
+    }
+    return times;
+  }
+
+  Future<List<double>> _getProfileTravelTimes({
+    required List<UserLocation> users,
+    required LatLng candidate,
+    required String profile,
+  }) async {
     final locations = <List<double>>[];
 
     // Candidate first
@@ -34,7 +60,7 @@ class RoutingRepository {
     });
 
     final response = await (_client?.post ?? http.post)(
-      Uri.parse(_baseUrl),
+      Uri.parse('$_baseUrl/$profile'),
       headers: {
         'Authorization': ApiKeys.ors,
         'Content-Type': 'application/json',
@@ -44,8 +70,7 @@ class RoutingRepository {
     );
 
     if (response.statusCode != 200) {
-      throw Exception(
-          'ORS API error ${response.statusCode}: ${response.body}');
+      throw Exception('ORS API error ${response.statusCode}: ${response.body}');
     }
 
     final data = jsonDecode(response.body);

@@ -17,7 +17,7 @@ Future<void> testRouting() async {
       id: '2',
       position: const LatLng(12.9352, 77.6245), // Koramangala
       color: Colors.blue,
-      travelMode: TravelMode.twoWheeler,
+      travelMode: TravelMode.cycling, // Bicycle, not motorcycle.
     ),
     UserLocation(
       id: '3',
