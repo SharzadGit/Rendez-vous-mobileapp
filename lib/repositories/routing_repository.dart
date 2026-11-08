@@ -6,6 +6,9 @@ import '../models/user_location.dart';
 
 class RoutingRepository {
   static const _baseUrl = 'https://api.openrouteservice.org/v2/matrix/driving-car';
+  final http.Client? _client;
+
+  RoutingRepository({http.Client? client}) : _client = client;
 
   /// Returns travel times in seconds from each user to the candidate point.
   Future<List<double>> getTravelTimes({
@@ -30,7 +33,7 @@ class RoutingRepository {
       'units': 'm',
     });
 
-    final response = await http.post(
+    final response = await (_client?.post ?? http.post)(
       Uri.parse(_baseUrl),
       headers: {
         'Authorization': ApiKeys.ors,
@@ -48,11 +51,11 @@ class RoutingRepository {
     final data = jsonDecode(response.body);
     final durations = data['durations'] as List;
 
-    // durations[0] contains times from the candidate to all points
-    // Skip index 0 (candidate to itself) and take the rest
+    // ORS rows are sources and columns are destinations. The candidate is
+    // destination 0; participant source rows follow the input user order.
     final times = <double>[];
-    for (var i = 1; i < durations[0].length; i++) {
-      final value = durations[0][i];
+    for (var i = 1; i <= users.length; i++) {
+      final value = durations[i][0];
       times.add(value == null ? 999999.0 : (value as num).toDouble());
     }
 
