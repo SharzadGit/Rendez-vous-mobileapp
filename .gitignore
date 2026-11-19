@@ -50,3 +50,4 @@ app.*.map.json
 /research/data/*.pbf
 /research/work/
 __pycache__/
+/research/results/venue_matrices.zip

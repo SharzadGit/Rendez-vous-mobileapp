@@ -1,0 +1,25 @@
+{
+  "host_system": "Windows",
+  "python": "3.12.14",
+  "machine": "AMD64",
+  "counts": {
+    "participant_reaches_no_venue": 161,
+    "feasible": 255,
+    "disjoint_reachable_venue_sets": 4
+  },
+  "matrix_pairs": 5669790,
+  "gap_max_s": 19.150720213762042,
+  "equal_worst": 208,
+  "forward_searches": 3990,
+  "forward_visits": 348226569,
+  "forward_total_s": 209.89457129873335,
+  "surface_total_s": 6.8230679980478985,
+  "rss_sample_range_mib": [
+    38.28125,
+    241.4921875
+  ],
+  "verify_searches_primary": 741,
+  "verify_cache_hits_primary": 534,
+  "verify_total_s_primary": 43.94499640399587,
+  "provider_requests": 0
+}

@@ -1,0 +1,29 @@
+{
+  "walking": {
+    "nodes": 108756,
+    "directed_arcs": 262830,
+    "one_direction_only_arcs": 0,
+    "strong_components": 438,
+    "strong_largest_nodes": 105120,
+    "weak_components": 438,
+    "weak_largest_nodes": 105120
+  },
+  "cycling": {
+    "nodes": 91128,
+    "directed_arcs": 195868,
+    "one_direction_only_arcs": 22026,
+    "strong_components": 1083,
+    "strong_largest_nodes": 88090,
+    "weak_components": 274,
+    "weak_largest_nodes": 89023
+  },
+  "driving": {
+    "nodes": 89707,
+    "directed_arcs": 192826,
+    "one_direction_only_arcs": 21854,
+    "strong_components": 982,
+    "strong_largest_nodes": 87402,
+    "weak_components": 216,
+    "weak_largest_nodes": 88293
+  }
+}

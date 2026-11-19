@@ -1,0 +1,287 @@
+[
+  {
+    "mode": "walking",
+    "method": "weiszfeld",
+    "osm_id": 9672296508,
+    "name": "Maverick and Farmer Coffee",
+    "times_s": [
+      295.9718402361176,
+      1485.3135659912841,
+      99.83325334112077
+    ],
+    "path_vertices": [
+      11,
+      71,
+      5
+    ],
+    "max_independent_error_s": 0.0,
+    "raster_vector_area_difference_m2": 0.0,
+    "common_area_m2": 24000.0
+  },
+  {
+    "mode": "walking",
+    "method": "isochrone",
+    "osm_id": 13288585571,
+    "name": "Indian Durbar",
+    "times_s": [
+      1032.3441355200603,
+      796.9534874436558,
+      849.7677563467902
+    ],
+    "path_vertices": [
+      55,
+      42,
+      48
+    ],
+    "max_independent_error_s": 0.0,
+    "raster_vector_area_difference_m2": 0.0,
+    "common_area_m2": 24000.0
+  },
+  {
+    "mode": "walking",
+    "method": "minsum",
+    "osm_id": 9672296508,
+    "name": "Maverick and Farmer Coffee",
+    "times_s": [
+      295.9718402361176,
+      1485.3135659912841,
+      99.83325334112077
+    ],
+    "path_vertices": [
+      11,
+      71,
+      5
+    ],
+    "max_independent_error_s": 0.0,
+    "raster_vector_area_difference_m2": 0.0,
+    "common_area_m2": 24000.0
+  },
+  {
+    "mode": "walking",
+    "method": "minmax",
+    "osm_id": 13288585571,
+    "name": "Indian Durbar",
+    "times_s": [
+      1032.3441355200603,
+      796.9534874436558,
+      849.7677563467902
+    ],
+    "path_vertices": [
+      55,
+      42,
+      48
+    ],
+    "max_independent_error_s": 0.0,
+    "raster_vector_area_difference_m2": 0.0,
+    "common_area_m2": 24000.0
+  },
+  {
+    "mode": "walking",
+    "method": "hybrid",
+    "osm_id": 13288585571,
+    "name": "Indian Durbar",
+    "times_s": [
+      1032.3441355200603,
+      796.9534874436558,
+      849.7677563467902
+    ],
+    "path_vertices": [
+      55,
+      42,
+      48
+    ],
+    "max_independent_error_s": 0.0,
+    "raster_vector_area_difference_m2": 0.0,
+    "common_area_m2": 24000.0
+  },
+  {
+    "mode": "cycling",
+    "method": "weiszfeld",
+    "osm_id": 9672296508,
+    "name": "Maverick and Farmer Coffee",
+    "times_s": [
+      94.71098887555763,
+      568.6336038993682,
+      31.946641069158648
+    ],
+    "path_vertices": [
+      11,
+      89,
+      5
+    ],
+    "max_independent_error_s": 0.0,
+    "raster_vector_area_difference_m2": 0.0,
+    "common_area_m2": 57600.0
+  },
+  {
+    "mode": "cycling",
+    "method": "isochrone",
+    "osm_id": 13357304253,
+    "name": "Bruno",
+    "times_s": [
+      383.44441963507944,
+      361.48574923653234,
+      320.6800718286806
+    ],
+    "path_vertices": [
+      65,
+      83,
+      59
+    ],
+    "max_independent_error_s": 0.0,
+    "raster_vector_area_difference_m2": 0.0,
+    "common_area_m2": 57600.0
+  },
+  {
+    "mode": "cycling",
+    "method": "minsum",
+    "osm_id": 9672296508,
+    "name": "Maverick and Farmer Coffee",
+    "times_s": [
+      94.71098887555763,
+      568.6336038993682,
+      31.946641069158648
+    ],
+    "path_vertices": [
+      11,
+      89,
+      5
+    ],
+    "max_independent_error_s": 0.0,
+    "raster_vector_area_difference_m2": 0.0,
+    "common_area_m2": 57600.0
+  },
+  {
+    "mode": "cycling",
+    "method": "minmax",
+    "osm_id": 13357304253,
+    "name": "Bruno",
+    "times_s": [
+      383.44441963507944,
+      361.48574923653234,
+      320.6800718286806
+    ],
+    "path_vertices": [
+      65,
+      83,
+      59
+    ],
+    "max_independent_error_s": 0.0,
+    "raster_vector_area_difference_m2": 0.0,
+    "common_area_m2": 57600.0
+  },
+  {
+    "mode": "cycling",
+    "method": "hybrid",
+    "osm_id": 13357304253,
+    "name": "Bruno",
+    "times_s": [
+      383.44441963507944,
+      361.48574923653234,
+      320.6800718286806
+    ],
+    "path_vertices": [
+      65,
+      83,
+      59
+    ],
+    "max_independent_error_s": 0.0,
+    "raster_vector_area_difference_m2": 0.0,
+    "common_area_m2": 57600.0
+  },
+  {
+    "mode": "driving",
+    "method": "weiszfeld",
+    "osm_id": 9672296508,
+    "name": "Maverick and Farmer Coffee",
+    "times_s": [
+      41.88567079885293,
+      268.3841142402479,
+      19.167984641495185
+    ],
+    "path_vertices": [
+      11,
+      89,
+      5
+    ],
+    "max_independent_error_s": 0.0,
+    "raster_vector_area_difference_m2": 0.0,
+    "common_area_m2": 80000.0
+  },
+  {
+    "mode": "driving",
+    "method": "isochrone",
+    "osm_id": 1852670707,
+    "name": "French Loaf",
+    "times_s": [
+      133.94723091600633,
+      189.70011448812602,
+      111.2295447586486
+    ],
+    "path_vertices": [
+      51,
+      103,
+      45
+    ],
+    "max_independent_error_s": 0.0,
+    "raster_vector_area_difference_m2": 0.0,
+    "common_area_m2": 80000.0
+  },
+  {
+    "mode": "driving",
+    "method": "minsum",
+    "osm_id": 9672296508,
+    "name": "Maverick and Farmer Coffee",
+    "times_s": [
+      41.88567079885293,
+      268.3841142402479,
+      19.167984641495185
+    ],
+    "path_vertices": [
+      11,
+      89,
+      5
+    ],
+    "max_independent_error_s": 0.0,
+    "raster_vector_area_difference_m2": 0.0,
+    "common_area_m2": 80000.0
+  },
+  {
+    "mode": "driving",
+    "method": "minmax",
+    "osm_id": 13357304253,
+    "name": "Bruno",
+    "times_s": [
+      174.92438552743943,
+      146.81039531817692,
+      152.20669937008168
+    ],
+    "path_vertices": [
+      65,
+      87,
+      59
+    ],
+    "max_independent_error_s": 0.0,
+    "raster_vector_area_difference_m2": 0.0,
+    "common_area_m2": 80000.0
+  },
+  {
+    "mode": "driving",
+    "method": "hybrid",
+    "osm_id": 13357304253,
+    "name": "Bruno",
+    "times_s": [
+      174.92438552743943,
+      146.81039531817692,
+      152.20669937008168
+    ],
+    "path_vertices": [
+      65,
+      87,
+      59
+    ],
+    "max_independent_error_s": 0.0,
+    "raster_vector_area_difference_m2": 0.0,
+    "common_area_m2": 80000.0
+  }
+]

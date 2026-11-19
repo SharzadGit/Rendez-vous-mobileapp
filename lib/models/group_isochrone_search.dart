@@ -73,11 +73,16 @@ class GroupIsochroneFailure {
 class GroupThresholdEvaluation {
   final Duration threshold;
   final IsochroneIntersectionResult commonRegion;
-  bool get feasible => !commonRegion.isEmpty;
+  final bool? accepted;
+  bool get feasible => accepted ?? !commonRegion.isEmpty;
   double get thresholdSeconds =>
       threshold.inMicroseconds / Duration.microsecondsPerSecond;
 
-  const GroupThresholdEvaluation(this.threshold, this.commonRegion);
+  const GroupThresholdEvaluation(
+    this.threshold,
+    this.commonRegion, {
+    this.accepted,
+  });
 }
 
 /// Wall-clock durations of this run, not experimental performance findings.

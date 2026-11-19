@@ -1,0 +1,20 @@
+{
+  "url": "https://download.geofabrik.de/asia/india/southern-zone-260101.osm.pbf",
+  "source_md5": "28fc4b5e4f569f50ac9dc45a98abaff5",
+  "source_sha256": "07e3eed1886e7e1c4456610ddd92f487c200936dc4288db5d5a973dc4abc6357",
+  "archive_sha256": "a6dbd8e9737327b5a59308025dab0d727a4ba87285575c56382e76e017912211",
+  "replication_timestamp": "2026-01-01T21:21:30Z",
+  "date_label": "2026-01-01",
+  "bbox_wsen": [
+    77.55,
+    12.943,
+    77.651,
+    13.025
+  ],
+  "halo_degrees": 0.012,
+  "node_coordinates": 156838,
+  "way_parts": 45624,
+  "point_features": 15021,
+  "license": "ODbL 1.0",
+  "attribution": "© OpenStreetMap contributors; extract by Geofabrik"
+}

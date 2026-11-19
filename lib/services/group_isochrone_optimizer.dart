@@ -25,7 +25,14 @@ class GroupIsochroneOptimizer {
   Future<GroupIsochroneSearchResult> optimize({
     required List<UserLocation> participants,
     required GroupIsochroneSearchConfig config,
-  }) => _Search(repository, intersectionService, participants, config).run();
+    bool Function(IsochroneIntersectionResult, Duration)? acceptRegion,
+  }) => _Search(
+    repository,
+    intersectionService,
+    participants,
+    config,
+    acceptRegion,
+  ).run();
 }
 
 class _Contour {
@@ -49,6 +56,7 @@ class _Search {
   final IsochroneIntersectionService intersector;
   final List<UserLocation> users;
   final GroupIsochroneSearchConfig config;
+  final bool Function(IsochroneIntersectionResult, Duration)? acceptRegion;
   final cache = <_Key, _Contour>{};
   final evaluations = <GroupThresholdEvaluation>[];
   final profiles = <String?>[];
@@ -65,6 +73,7 @@ class _Search {
     this.intersector,
     List<UserLocation> users,
     this.config,
+    this.acceptRegion,
   ) : users = List.unmodifiable(users);
 
   Future<GroupIsochroneSearchResult> run() async {
@@ -75,7 +84,7 @@ class _Search {
       var step = config.initialStep.inMicroseconds;
       while (true) {
         final (region, contours) = await _evaluate(threshold);
-        if (!region.isEmpty) {
+        if (evaluations.last.feasible) {
           high = threshold;
           best = region;
           bestContours = contours;
@@ -100,7 +109,7 @@ class _Search {
         final mid =
             low! + Duration(microseconds: (high! - low!).inMicroseconds ~/ 2);
         final (region, contours) = await _evaluate(mid);
-        if (region.isEmpty) {
+        if (!evaluations.last.feasible) {
           low = mid;
         } else {
           high = mid;
@@ -318,10 +327,12 @@ class _Search {
           threshold: threshold,
         );
       }
+      final feasible =
+          !region.isEmpty && (acceptRegion?.call(region, threshold) ?? true);
       if (evaluations.any(
         (e) =>
-            (e.feasible && e.threshold < threshold && region.isEmpty) ||
-            (!e.feasible && e.threshold > threshold && !region.isEmpty),
+            (e.feasible && e.threshold < threshold && !feasible) ||
+            (!e.feasible && e.threshold > threshold && feasible),
       )) {
         _abort(
           GroupIsochroneFailureCategory.numericalNonmonotonicity,
@@ -329,7 +340,9 @@ class _Search {
           threshold: threshold,
         );
       }
-      evaluations.add(GroupThresholdEvaluation(threshold, region));
+      evaluations.add(
+        GroupThresholdEvaluation(threshold, region, accepted: feasible),
+      );
       return (region, List<RoadNetworkIsochrone>.unmodifiable(ordered));
     } on _Abort {
       rethrow;

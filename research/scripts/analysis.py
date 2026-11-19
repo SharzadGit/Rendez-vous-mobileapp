@@ -108,10 +108,14 @@ def summarize(folder):
         method = part.method.iloc[0] if label!="nearest" else "weiszfeld"
         joined = part.merge(base[base.label==method],on="scenario",suffixes=("","_base"))
         differences = joined.max_s-joined.max_s_base
-        groups = differences.groupby([joined.pattern,joined["size"],joined.rep]).mean().dropna()
+        groups = differences.dropna().groupby([joined.pattern,joined["size"],joined.rep]).agg(["sum","count"])
         # Descriptive over independent sampled group blocks, including modes together.
         g = np.random.default_rng(RNG)
-        boot = g.choice(groups.to_numpy(),(B,len(groups))).mean(axis=1)/60 if len(groups) else [np.nan]
+        if len(groups):
+            idx = g.integers(len(groups),size=(B,len(groups)))
+            boot = groups['sum'].to_numpy()[idx].sum(axis=1) / groups['count'].to_numpy()[idx].sum(axis=1) / 60
+        else:
+            boot = [np.nan]
         ok = joined.venue_id.notna() & joined.venue_id_base.notna()
         sens.append(dict(label=label,reference=method,attempts=len(joined),pairs=int(ok.sum()),
             failure_rate=joined.failed.mean(),changed_venue_rate=(joined.venue_id[ok]!=joined.venue_id_base[ok]).mean(),

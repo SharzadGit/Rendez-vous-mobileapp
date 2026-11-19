@@ -1,5 +1,6 @@
 """From the repository root: python research/run.py [pilot|run|analyse|all]."""
 import argparse
+import os
 import sys
 from pathlib import Path
 
@@ -33,9 +34,13 @@ def main():
         grid = Grid(net.xy,CFG["cell_m"])
         folder = WORK/signature()
     from analysis import summarize
+    (WORK/'matplotlib').mkdir(parents=True,exist_ok=True)
+    os.environ.setdefault('MPLCONFIGDIR',str(WORK/'matplotlib'))
     from figures import figures
+    from audit import audit
     f = summarize(folder)
     figures(net,grid,folder,f)
+    audit()
 
 
 if __name__ == "__main__":

@@ -163,17 +163,15 @@
     "url": "https://doi.org/10.1214/aos/1176344552"
   },
   {
-    "doi": "10.2202/1544-6115.1585",
-    "title": "Permutation P-values Should Never Be Zero: Calculating Exact P-values When Permutations Are Randomly Drawn",
     "authors": [
-      "Belinda Phipson",
-      "Gordon K Smyth"
+      "Sture Holm"
     ],
-    "journal": "Statistical Applications in Genetics and Molecular Biology",
-    "year": 2010,
-    "volume": "9",
-    "pages": "",
-    "url": "https://doi.org/10.2202/1544-6115.1585"
+    "title": "A simple sequentially rejective multiple test procedure",
+    "journal": "Scandinavian Journal of Statistics",
+    "year": 1979,
+    "volume": "6",
+    "pages": "65–70",
+    "url": "https://www.jstor.org/stable/4615733"
   },
   {
     "doi": "10.1177/2399808318802941",
@@ -199,5 +197,48 @@
     "volume": "7",
     "pages": "12-18",
     "url": "https://doi.org/10.1109/mprv.2008.80"
+  },
+  {
+    "doi": "10.1109/tkde.2005.87",
+    "title": "Aggregate nearest neighbor queries in road networks",
+    "authors": [
+      "M.L. Yiu",
+      "N. Mamoulis",
+      "D. Papadias"
+    ],
+    "journal": "IEEE Transactions on Knowledge and Data Engineering",
+    "year": 2005,
+    "volume": "17",
+    "pages": "820-833",
+    "url": "https://doi.org/10.1109/tkde.2005.87"
+  },
+  {
+    "doi": "10.1177/03611981231169280",
+    "title": "Quality Assessment of OpenStreetMap’s Points of Interest with Large-Scale Real Data",
+    "authors": [
+      "Christian Klinkhardt",
+      "Fabian Kühnel",
+      "Michael Heilig",
+      "Sven Lautenbach",
+      "Tim Wörle",
+      "Peter Vortisch",
+      "Tobias Kuhnimhof"
+    ],
+    "journal": "Transportation Research Record: Journal of the Transportation Research Board",
+    "year": 2023,
+    "volume": "2677",
+    "pages": "661-674",
+    "url": "https://doi.org/10.1177/03611981231169280"
+  },
+  {
+    "authors": [
+      "E. Weiszfeld"
+    ],
+    "title": "Sur le point pour lequel la somme des distances de n points donnés est minimum",
+    "journal": "Tohoku Mathematical Journal, First Series",
+    "year": 1937,
+    "volume": "43",
+    "pages": "355–386",
+    "url": "https://www.jstage.jst.go.jp/article/tmj1911/43/0/43_0_355/_article/-char/en"
   }
 ]
