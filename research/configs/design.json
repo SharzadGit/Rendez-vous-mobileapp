@@ -1,0 +1,58 @@
+{
+  "bbox": [
+    77.55,
+    12.943,
+    77.651,
+    13.025
+  ],
+  "halo_deg": 0.012,
+  "epsg": 32643,
+  "seed": 2627,
+  "patterns": [
+    "compact",
+    "circular",
+    "corridor",
+    "outlier",
+    "city-centre",
+    "peripheral",
+    "barrier-separated"
+  ],
+  "sizes": [
+    3,
+    5,
+    10,
+    20
+  ],
+  "modes": [
+    "walking",
+    "cycling",
+    "driving"
+  ],
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "alphas": [
+    0,
+    0.25,
+    0.5,
+    0.75,
+    1
+  ],
+  "categories": [
+    "cafe",
+    "restaurant",
+    "library",
+    "community_centre"
+  ],
+  "snap_limit_m": 75,
+  "radius_m": 500,
+  "cell_m": 40,
+  "threshold_min_s": 0,
+  "threshold_max_s": 10800,
+  "precision_s": 30,
+  "tolerance_m": 0.05
+}

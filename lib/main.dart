@@ -17,7 +17,8 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({super.key, this.tileProvider});
+  final TileProvider? tileProvider;
 
   @override
   Widget build(BuildContext context) {
@@ -34,14 +35,15 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: const MapScreen(),
+        home: MapScreen(tileProvider: tileProvider),
       ),
     );
   }
 }
 
 class MapScreen extends StatelessWidget {
-  const MapScreen({super.key});
+  const MapScreen({super.key, this.tileProvider});
+  final TileProvider? tileProvider;
 
   void _openBottomSheet(BuildContext context) {
     showModalBottomSheet(
@@ -111,6 +113,7 @@ class MapScreen extends StatelessWidget {
               ),
               children: [
                 TileLayer(
+                  tileProvider: tileProvider,
                   urlTemplate:
                       'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
                   userAgentPackageName: 'com.example.rendezvous_app',
