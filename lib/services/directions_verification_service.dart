@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:math' as math;
 import 'package:http/http.dart' as http;
-import '../config/api_keys.dart';
 import '../config/ors_endpoints.dart';
 import '../models/research_venue.dart';
 import '../models/user_location.dart';
@@ -302,7 +301,6 @@ class DirectionsVerificationService {
       final response = await (client?.post ?? http.post)(
         Uri.parse('${OrsEndpoints.baseUrl}/directions/$profile/geojson'),
         headers: {
-          'Authorization': ApiKeys.ors,
           'Content-Type': 'application/json',
           'Accept': 'application/geo+json',
         },

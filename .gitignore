@@ -43,3 +43,10 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# Local research tools, untrimmed regional source and temporary outputs
+/.tools/
+/.venv/
+/research/data/*.pbf
+/research/work/
+__pycache__/
